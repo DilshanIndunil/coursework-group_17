@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drakon Community Chat</title>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="chat.js" defer></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+</head>
+<body class="bg-gradient-to-r from-indigo-500 to-blue-600 h-screen flex items-center justify-center">
+    <div class="w-full max-w-4xl bg-white rounded-lg shadow-xl overflow-hidden flex flex-col h-full">
+        <!-- Header -->
+        <div class="bg-gradient-to-r from-blue-500 to-teal-500 text-white text-center py-5 rounded-t-lg">
+            <h1 class="text-3xl font-extrabold">Drakon Community Chat</h1>
+            <p class="text-lg font-light">Join the conversation and share your thoughts with fellow shoppers!</p>
+        </div>
+
+        <!-- Messages Section -->
+        <div id="messages" class="flex-grow overflow-y-auto p-6 space-y-4 bg-gray-50">
+            <!-- Messages will be injected here -->
+        </div>
+
+        <!-- Input Section -->
+        <form id="chat-form" class="flex items-center p-4 bg-white border-t border-gray-300">
+            <input id="message-input" type="text" placeholder="Type your message..." class="flex-grow p-3 text-lg border rounded-l-xl focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-md placeholder-gray-500">
+            <button type="submit" class="ml-3 px-6 py-3 bg-gradient-to-r from-teal-500 to-blue-500 text-white rounded-r-xl shadow-lg hover:scale-105 transform transition-all">Send</button>
+        </form>
+    </div>
+</body>
+</html>

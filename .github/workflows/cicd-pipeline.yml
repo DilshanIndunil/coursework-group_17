@@ -1,0 +1,51 @@
+name: MERN CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  setup-and-run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+      - name: Install Dependencies for Backend
+        working-directory: ./server
+        run: npm install
+
+      - name: Start Backend Server (in background)
+        working-directory: ./server
+        run: |
+          nohup node app.js &
+          sleep 5  # Give it a moment to start the server
+
+      - name: Install Dependencies for Frontend
+        working-directory: ./client
+        run: npm install
+
+      - name: Start Frontend Server (in background)
+        working-directory: ./client
+        run: |
+          nohup npm start &
+          sleep 5  # Give it a moment to start the server
+
+      - name: Install Dependencies for Websocket
+        working-directory: ./websocket
+        run: npm install
+
+      - name: Start Websocket Server (in background)
+        working-directory: ./websocket
+        run: |
+          nohup node server.js &
+          sleep 5  # Give it a moment to start the server

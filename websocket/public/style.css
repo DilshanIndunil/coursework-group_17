@@ -1,0 +1,10 @@
+/* Optional: Custom animations or effects */
+@keyframes bounceIn {
+    0% { transform: translateY(-30px); opacity: 0; }
+    60% { transform: translateY(10px); opacity: 1; }
+    100% { transform: translateY(0); opacity: 1; }
+}
+
+.message {
+    animation: bounceIn 0.5s ease-out;
+}
